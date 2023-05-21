@@ -66,6 +66,10 @@ app.post("/login", async function(req, res){
       }
 });
 
+app.get('/', function (req, res) {
+	res.redirect("/HTML/HomePage.html");
+})
+
 var port = 5500;
 app.listen(port, function () {
     console.log("Server Is Listening To Port 5500 !");
