@@ -168,10 +168,15 @@ input::-webkit-input-placeholder {
 
 /* *END PROFILE MENU */
 
-.view_item img{
-  width: calc(40px + 4.3vw);
+.view_item .img{
+  width: calc(60px + 4.3vw);
+  height:100%;
   border-radius: 5px;
   cursor: pointer;
+  aspect-ratio: 3/4;
+  background-size: cover;
+  background-position: 5%;
+  margin-right: 25px;
 }
 
 

@@ -199,11 +199,12 @@ input::-webkit-input-placeholder {
 .view_item .title{
   font-weight: 600;
   font-size: 40px;
+
 }
 
 .view_item .author{
   font-weight: 400;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .view_item .content{
@@ -220,21 +221,19 @@ input::-webkit-input-placeholder {
   margin-top: 55px;
 }
 
-.view_item .btn1,.btn2 {
-  width: 125px;
+.view_item .btn1 {
+  width: 150px;
   background: rgba(205, 117, 63, 0.76);
-  padding: 8px;
+  padding: 4px;
   border-radius: 5px;
   color: #ffffff;
   text-align: center;
   font-weight: 200;
   cursor: pointer;
 }
-.view_item .btn2{
-  margin-left: 10px;
-}
 
-.view_item .btn1:hover , .btn2:hover {
+
+.view_item .btn1:hover {
   background: #cd753f;
 }
 .view_item .authorn{

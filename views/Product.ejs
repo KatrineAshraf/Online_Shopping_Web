@@ -43,20 +43,16 @@
 
     <div class="view_item">
       <div class="vi_left">
-        <img src="/Images/ATTWN.jpg">
+        <img src="<%=product.image%>">
       </div>
       <div class="vi_right">
-        <p class="title">And Then There Were None</p>
-        <p class="author">-Agatha Christie</p>
-        <p class="content">A definitive ensemble murder mystery, Clair's star-studded whodunit remains a masterfully-plotted game of suspense. On a remote and isolated island, ten people - seven invited guests, a newly hired personal secretary and two servants - find themselves facing their own deaths.</p>
-       <div class="btns">
-          <div class="btn1">Buy Now</div>
-          <div class="btn2">Add To Wishlist</div>
-        </div>
-      </div>
-      <div class="authorn">
-        <img src="/Images/aghasa.jpg">
-        <p>-Agatha Christie</p>
+        <p class="title"><%=product.name%></p>
+        <p class="author">-<%=product.author%></p>
+        <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+        <form action="/cart" method='post' class="btns">
+          <input type="submit" class="btn1" value="Add To Cart">
+          <input type="hidden" name="id" value=<%=product.id%>>
+          </form>
       </div>
     </div>
   </div>
