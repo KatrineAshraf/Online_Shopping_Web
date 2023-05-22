@@ -1,36 +1,34 @@
 //! Importing Modules
 var express = require("express");
 var bodyParser = require("body-parser");
-const mongoose = require('mongoose');
+var db = require("../project/database.js");
 const customerRoute = require("./routes/customerRoute")
 const productRoute = require("./routes/productRoute")
+var path = require("path");
 
 //! Database Connection
-mongoose.connect('mongodb+srv://AbdelrahmanEssmat:project12345@cluster0.0pmfj5p.mongodb.net/MyDatabase');
-var db = mongoose.connection;
-db.on('error', console.log.bind(console, "connection error"));
-db.once('open', function(callback){
-	console.log("Connection Succeeded");
-})
+
 
 //! Express Server Initialization
 var app = express()
 app.use(bodyParser.json());
-app.use(express.static('Public'));
+app.use(express.static(path.join(__dirname,'Public')));
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
 app.use(productRoute);
 app.use(customerRoute);
 
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs');
 //! User Registration
 app.post('/Users', function(req,res){
-	var fname = req.body.fname;
+	/*var fname = req.body.fname;
 	var lname = req.body.lname;
 	var email =req.body.email;
 	var pass = req.body.password;
 	var gender =req.body.gender;
-
+*/
 	console.log(req.body);
 	db.collection('Users').insertOne(req.body,function(err, collection){
 		if (err) throw err;
@@ -74,3 +72,4 @@ var port = 5500;
 app.listen(port, function () {
     console.log("Server Is Listening To Port 5500 !");
 });
+module.exports = app;

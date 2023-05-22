@@ -196,10 +196,12 @@ input::-webkit-input-placeholder {
 
 }
 
-.cards img{
+.cards .img{
     width: calc(90px + 12vw);
     aspect-ratio: 3/4;
     border-radius: 4% 4% 0 0 ;
+    background-size: cover;
+    background-position: 5%;
 }
 
 .cards a{
