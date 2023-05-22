@@ -39,23 +39,30 @@
 
 </header>
 
+
+
+
+
 <main>
   <div class="view_wrap list-view" style="display: block;">
+<%if (products.length < 6){ var x = products.length;} else{ var x = 5;} for(var i=0; i < x; i++){ %>
     <div class="view_item">
       <div class="vi_left" onclick="window.location.href = 'Product.html';">
-        <img src="/Images/ATTWN.jpg" alt="tomato">
+        <img src="<%=products[i].image%>" alt="tomato">
       </div>
       <div class="vi_right">
-        <p class="title" onclick="window.location.href = 'Product.html';" >And Then There Were None</p>
-        <p class="author">-Agatha Christie</p>
-        <p class="content" >A definitive ensemble murder mystery, Clair's star-studded whodunit remains a masterfully-plotted game of suspense. On a remote and isolated island, ten people - seven invited guests, a newly hired personal secretary and two servants - find themselves facing their own deaths.</p>
-        <div class="btns">
-          <div class="btn1">Buy Now</div>
-          <div class="btn2">Add To Wishlist</div>
+        <p class="title" onclick="window.location.href = 'Product.html';" ><%=products[i].name%></p>
+        <p class="author">-<%=products[i].author%></p>
+        <!-- <p class="content" >A definitive ensemble murder mystery, Clair's star-studded whodunit remains a masterfully-plotted game of suspense. On a remote and isolated island, ten people - seven invited guests, a newly hired personal secretary and two servants - find themselves facing their own deaths.</p> -->
+        <form action="/cart" method='post' class="btns">
+          <input type="submit" class="btn1" value="Add To Cart">
+          <input type="hidden" name="id" value=<%=products[i].id%>>
+          <!-- <div class="btn2">Add To Wishlist</div> -->
         </div>
       </div>
     </div>
-
+    <%}%>
+<!-- 
     <div class="view_item">
       <div class="vi_left">
         <img src="/Images/ATTWN.jpg" alt="tomato">
@@ -100,7 +107,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 
     <footer>
       <div class="about">
