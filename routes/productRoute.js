@@ -18,7 +18,7 @@ router.post("/Section", async function(req, res){
            
 		  });
 		const userId = req.session.userId;
-        res.render('List', {products: products , userId});
+        res.render('List', {products: products , userId, istop: false});
       
 });
 router.post('/Product', async function(req, res){

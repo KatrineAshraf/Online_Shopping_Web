@@ -48,10 +48,10 @@ app.get("/Categories", function (req, res) {
 app.get("/topSellers", async function (req, res) {
 	let books = await db.collection("products").find({}).sort({price: -1}).toArray()
 	if (userId != ""){
-		res.render("List", {products: books, userId: true});
+		res.render("List", {products: books, userId: true, istop: true});
 	}
 	else {
-		res.render("List", {products: books, userId: false});
+		res.render("List", {products: books, userId: false,istop: true});
 	}
 })
 app.get("/AboutUS", function (req, res) {

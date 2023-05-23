@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><%=products[0].category%></title>
+  <% if (istop) var x= "Top Sellers"; else var x= products[0].category; %>
+  <title><%=x%></title>
   <link href="/CSS/List.css" rel="stylesheet" >
 </head>
 <body>
