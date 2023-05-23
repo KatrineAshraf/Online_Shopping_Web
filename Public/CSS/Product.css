@@ -184,8 +184,8 @@ input::-webkit-input-placeholder {
 }
 
 .list-view .view_item {
-  background: linear-gradient(90deg, rgb(219, 165, 107), #E38B29);
-  border: 2px solid rgba(205, 117, 63, 0.73);
+  background: linear-gradient(90deg, rgb(231, 214, 197), #979595b4);
+  border: 2px solid rgba(86, 84, 83, 0.73);
   padding: 10px 20px;
   display: flex;
 }
@@ -232,13 +232,13 @@ input::-webkit-input-placeholder {
 }
 
 .view_item .btn1,.btn2 {
-  width: 125px;
-  background: rgba(205, 117, 63, 0.76);
+  width: 140px;
+  background: rgba(232, 224, 219, 0.76);
   padding: 8px;
   border-radius: 5px;
-  color: #ffffff;
+  font-weight: 400;
+  color: #000000;
   text-align: center;
-  font-weight: 200;
   cursor: pointer;
 }
 .view_item .btn2{
@@ -246,7 +246,8 @@ input::-webkit-input-placeholder {
 }
 
 .view_item .btn1:hover , .btn2:hover {
-  background: #cd753f;
+  background: #010101;
+  color: white;
 }
 .view_item .authorn{
   width: auto;

@@ -2,6 +2,7 @@ const Product = require("../models/products");
 const Customer = require("../models/customers");
 const Transaction = require("../models/transactions");
 var db = require("../database.js");
+const  ObjectId  = require('mongodb').ObjectId;
 const mongoose = require("mongoose");
 const { session } = require("passport");
 exports.createProduct = async (req, res, next) => {
