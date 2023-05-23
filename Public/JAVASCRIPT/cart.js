@@ -149,21 +149,6 @@ var app = {
   
 
 };
-function check() {
-  var checkBox = document.getElementById("myCheck");
-  var text = document.getElementById("text");
-  if (checkBox.checked == true ){
-    const style = ' <style> ._btn.checkout-btn { cursor:pointer;} </style>';
-     document.head.insertAdjacentHTML('beforeend', style);
-     text.style.display = "block";
-     
-  } else {
-    const style = ' <style> ._btn.checkout-btn { cursor:not-allowed;;} </style>';
-    document.head.insertAdjacentHTML('beforeend', style);
-     text.style.display = "none";
-  }
-  
- }
 
  function checkout(){
   var checkBox = document.getElementById("myCheck");

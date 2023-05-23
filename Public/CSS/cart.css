@@ -418,13 +418,13 @@ h1, .sub-heading {
  */
 /* el fasel been el header w ba2y el kalam */
 .cart-totals {
+  justify-content: space-evenly;
   margin-top: calc(12px + 12.85vw);
   background: linear-gradient(90deg, rgba(132, 131, 130, 0.717), #575757b1);
   border: 3px solid rgba(0, 0, 0, 0.73);
   padding: 0.8% 1.5%;
   margin-top: 40px;
   display: flex;
-  align-items: center;
   /* width:calc(100px + 55vw); */
   width:110%;
   margin-left: auto;
@@ -450,7 +450,7 @@ h1, .sub-heading {
 .cart-totals-key {
   font-size: 1.125em;
   color: #bdc3c7;
-  padding-left: 15px;
+
 
 }
 .cart-totals ._column:hover .cart-totals-value,
@@ -460,18 +460,18 @@ h1, .sub-heading {
 }
 .cart-totals-value {
   font-size: 2em;
-  padding-left: 15px;
+
 }
 ._column.checkout {
+  display: block;
     text-align: right;
     padding: 0;
     margin-top: 1.5em;
-    vertical-align: middle; 
+    margin-left: 50%;
     border-radius: 40px;
   }
   .checkout-btn:before {
     margin-right: 1px;
-
 
   }
 
