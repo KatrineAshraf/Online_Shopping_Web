@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root{
-  --dark : #CD853F;
-  --light :#F4A460;
+  --dark : #ccccccc7;
+  --light :#faf6f37c;
   --lbny :#2e70a9;
 }
- 
 * {
   font-family: 'Poppins', sans-serif;
   padding: 0;
@@ -191,7 +190,7 @@ input::-webkit-input-placeholder {
   justify-content: space-between;
   flex-direction: column;
   border: 3px solid;
-  color: brown;
+  color: rgb(80, 80, 80);
   background-color: var(--dark);
   margin-top: 7%;
   margin-bottom: 7%;

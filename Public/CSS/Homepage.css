@@ -266,7 +266,7 @@ input::-webkit-input-placeholder {
 
 /* * START BEST SELLERS  */
 .title {
-  background-color: #B22222;
+  background-color: #c7c7c78f;
   text-align: center;
   padding: calc(15px + 1.5vw);
   font-size: calc(15px + 1vw);
