@@ -203,7 +203,7 @@ header{
 .cards{
     transition: 300ms ease-in-out;
     margin: 2.5%;
-    background-color: rgb(219, 165, 107);
+    background-color: rgb(0, 0, 0);
     border-radius: 4%;
 
 }
@@ -223,6 +223,7 @@ header{
 }
 
 .cards h4{
+    color: white;
     text-align: center;
     font-size: calc(7px + 0.9vw);
     padding: calc(5px + 0.5vw);
@@ -232,7 +233,7 @@ header{
     transition: 300ms ease-in-out;
     transform: scale(1.1);
     z-index: 2;
-    color: #00838d
+    color: #00838d;
 
 }
 

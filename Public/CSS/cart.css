@@ -331,6 +331,11 @@ h1, .sub-heading {
     height: 100%; /* make vertical lines match */
 }
 
+.price{
+  margin-left: 2%;
+  font-size: 3.6em;
+}
+
 /**
  * @section: product-modifiers;
  * @extends: _column;
@@ -365,7 +370,8 @@ h1, .sub-heading {
   display: flex;
   justify-content: space-evenly;
   margin-top: calc(12px + 12.85vw);
-  background: linear-gradient(90deg, rgba(132, 131, 130, 0.717), #575757b1);
+  background: linear-gradient(90deg, rgba(132, 131, 130, 0.717), rgba(132, 131, 130, 0.629));
+  backdrop-filter: blur(5px);
   border: 3px solid rgba(0, 0, 0, 0.73);
   padding: 0.8% 1.5%;
   margin-top: 40px;
