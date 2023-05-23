@@ -56,3 +56,9 @@ exports.buyItem = async (req, res, next) => {
 exports.checkOut = async (req, res, next) => {
     productController.checkOut(req, res, next);
 };
+exports.getProfile = async (req, res, next) => {
+    const customer = await Customer.findOne({_id: req.session.userId})
+    if (customer){
+        res.render('profile', { customer: customer})
+    }
+};

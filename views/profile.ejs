@@ -31,14 +31,14 @@
         </form>
         
         <div class="dropdown">
-          <a href="profile.html"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
+          <a href="/profile"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
           <div class="dropdown-content">
             <a class="t" href="profile.html">Profile</a>
             <a class="b" href="cart.html">Cart</a>
           </div>
         </div>
         <div class="cart">
-        <a href="cart.html"><img class="cart_photo" src="/Images/cart.png"></a>
+        <a href="/cart"><img class="cart_photo" src="/Images/cart.png"></a>
         </div>
       </div>
       
@@ -49,31 +49,15 @@
         <hr> <br>
         <form method="get">
             <h5>Username</h5>
-            <p>get name from database</p>
+            <p><%=customer.fname%> <%=customer.lname%></p>
             <br>
             <h5>Email</h5>
-            <p>get email from database</p>
+            <p><%=customer.email%></p>
             <br>
-            <h5>Location</h5>
-            <p>get location from database</p>
-            <br>
-            <h5>Country</h5>
-            <p>get country from database</p>
-            <br>
-            <h5>Phone number</h5>
-            <p>get Phone number from database</p>
-            <br>
-            <h5>Prefered language</h5>
+            <h5>Spent</h5>
+            <p><%=customer.total%> $</p>
             
-            <!-- <form action="/action_page.php"> -->
-              <form id="lang" action="#">
-              <input type="radio" id="Arabic" name="fav_language" value="Arabic">
-              <label for="Arabic"> Arabic</label>
-              <input type="radio" id="English" name="fav_language" value="English">
-              <label for="English">English</label>
-              <input type="radio" id="French" name="fav_language" value="French">
-              <label for="French">French</label>
-              <br>
+           
         </form>
       
     </div>
