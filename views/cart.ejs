@@ -9,7 +9,7 @@
 <body>
 <script src="/JAVASCRIPT/cart.js"></script>
 <header>
-  <div class="logot" onclick="window.location.href = 'HomePage.html';">
+  <div class="logot" onclick="window.location.href = '/HomePage';">
     <img src="/Images/book.png" >
     <h2 class="brandn">BOOKWORM</h2>
   </div>
@@ -30,10 +30,10 @@
       <button class="simg" type="submit"><img src="/Images/search.png" alt=""></button>
     </form>
         <div class="dropdown">
-        <a href="/profile"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
+        <a href="profile.html"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
         <div class="dropdown-content">
-          <a class="t" href="/profile">Profile</a>
-          <a class="b" href="/cart">Cart</a>
+          <a class="t" href="profile.html">Profile</a>
+          <a class="b" href="cart.html">Cart</a>
         </div>
       </div>
       <div class="cart">
@@ -45,26 +45,26 @@
 <main>
   <div class="view_wrap list-view" style="display: block;">
     <%if (products.length < 20){ var x = products.length;} else{ var x = 20;} for(var i=0; i < x; i++){ %>
-      <div class="view_item">
-        <form action="/Product" method="post">
-        <div class="vi_left">
-          <input class="img" type="submit" style="background-image:url(<%=products[i].image%>);" value="" >
-        </div>
-        <input type="hidden" name="id" value=<%=products[i]._id%>>
-        </form>
-        <div class="vi_right">
-          <p class="title"><%=products[i].name%></p>
-          <p class="author">-<%=products[i].author%></p>
-          <form action="/cart" method='post' class="btns">
-            <input type="submit" class="btn1" value="Add To Cart">
-            <%= console.log(products[i]._id) %>
-            <%var PID =products[i]._id %>
-            <input type="hidden" name="id" value="<%= PID %>">
-            </form>
-            </div>
+        <div class="view_item">
+          <form action="/Product" method="post">
+          <div class="vi_left">
+            <input class="img" type="submit" style="background-image:url(<%=products[i].image%>);" value="" >
           </div>
-      <%}%>
-    </div>
+          <input type="hidden" name="id" value=<%=products[i]._id%>>
+          </form>
+          <div class="vi_right">
+            <p class="title"><%=products[i].name%></p>
+            <p class="author">-<%=products[i].author%></p>
+            <form action="/cart" method='post' class="btns">
+              <input type="submit" class="btn1" value="Add To Cart">
+              <%= console.log("helpme") %>
+              <%var PID =products[i]._id %> 
+              <input type="hidden" name="id" value="<%= PID %>">
+              </form>
+              </div>
+            </div>
+        <%}%>
+      </div>
 <div class="main">
      
   
