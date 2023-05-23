@@ -8,7 +8,6 @@ const Customer = require("./models/customers.js");
 const productRoute = require("./routes/productRoute")
 var path = require("path");
 const cookieParser = require("cookie-parser");
-var userId = "";
 //! Database Connection
 
 
@@ -36,29 +35,26 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-	res.redirect("/HTML/HomePage.html");
+	res.redirect("/HomePage");
 })
 
 app.get("/HomePage", function (req, res) {
-	res.redirect("/HTML/HomePage.html");
+	res.render('HomePage', {userId: req.session.userId});
 })
 app.get("/Categories", function (req, res) {
-	res.redirect("/HTML/Categories.html");
+	res.render("Categories", {userId: req.session.userId});
 })
+
 app.get("/topSellers", async function (req, res) {
 	let books = await db.collection("products").find({}).sort({price: -1}).toArray()
-	if (userId != ""){
-		res.render("List", {products: books, userId: true, istop: true});
-	}
-	else {
-		res.render("List", {products: books, userId: false,istop: true});
-	}
+	res.render("List", {products: books, userId: req.session.userId, istop: true});
 })
+
 app.get("/AboutUS", function (req, res) {
-	res.redirect("/HTML/AboutUS.html");
+res.render("AboutUs", {userId: req.session.userId});
 })
 app.get("/ContactUs", function (req, res) {
-	res.redirect("/HTML/ContactUs.html");
+	res.render("ContactUs", {userId: req.session.userId});
 })
 app.get("/SignIn.html", function (req, res) {
 	res.redirect("/HTML/SignIn.html");

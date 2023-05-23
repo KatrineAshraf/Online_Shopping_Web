@@ -78,3 +78,20 @@ exports.getProductURL = async (req, res, next) => {
         product: product
     });
 };
+exports.ListProduct = async (req, res, next) => {
+    let products = await db.collection('products').find({ category: req.body.category }).toArray(function(err, result) {
+        if (err) throw err;
+        console.log(result);
+       
+      });
+    const userId = req.session.userId;
+    res.render('List', {products: products , userId, istop: false});
+}
+
+exports.getProduct = async function(req, res){
+	//console.log(req.body.id)
+	let item = await db.collection('products').findOne({_id : new ObjectId(req.body.id)})
+	//console.log(item)
+	const userId = req.session.userId;
+	res.render('Product', {product: item, userId});
+};

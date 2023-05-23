@@ -11,7 +11,7 @@ exports.createCustomer = async (req, res, next) => {
 	var total = 0;
     const customer = new Customer({ fname, lname, email, password, gender, items, total });
     const savedCustomer = await customer.save();
-    res.redirect("/HTML/HomePage.html");
+    res.redirect("/HomePage");
 };
 
 exports.signIn = async (req, res, next) => {
@@ -27,7 +27,7 @@ exports.signIn = async (req, res, next) => {
                 req.session.userId = user._id;
                 console.log(req.session);
 				console.log("Loggin Page Hit !")
-				res.redirect("/HTML/HomePage.html");
+				res.redirect("/HomePage");
 			} else {
 				console.log("Incorrect Password !")
 				res.redirect("/HTML/SignIn.html");

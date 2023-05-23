@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About Us</title>
-  <link href="/CSS/AboutUs.css" rel="stylesheet">
+  <title>Contact Us</title>
+  <link href="/CSS/ContactUs.css" rel="stylesheet"  >
 </head>
-
 <body>
 
 <header>
@@ -29,35 +28,43 @@
       <input class="search" type="text" name="Search" id="" placeholder="Search">
       <button class="simg" type="submit"><img src="/Images/search.png" alt=""></button>
     </form>
-    <div class="dropdown">
-      <a href="/profile"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
-      <div class="dropdown-content">
-        <a class="t" href="SignIn.html">Sign In</a>
-        <a class="b" href="SignUp.html">Sign Up</a>
+    <% if (userId) { %> 
+      <div class="dropdown">
+        <a href="/profile"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
+        <div class="dropdown-content">
+          <a class="t" href="/profile">Profile</a>
+          <a class="b" href="/cart">Cart</a>
+        </div>
       </div>
-    </div>
-    <div class="cart">
-      <a href="cart.html"><img class="cart_photo" src="/Images/cart.png"></a>
-    </div>
+      <div class="cart">
+        <a href="/cart"><img class="cart_photo" src="/Images/cart.png"></a>
+      </div>
+        <% } else { %>
+          <div class="dropdown">
+            <a href="#"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
+            <div class="dropdown-content">
+              <a class="t" href="SignIn.html">Sign In</a>
+              <a class="b" href="SignUp.html">Sign Up</a>
+            </div>
+          </div>
+          <div class="cart">
+            <a href="#"><img class="cart_photo" src="/Images/cart.png"></a>
+          </div>
+          <% } %>
   </div>
 
 </header>
 
-
-<div class="AboutUs">
-  <h1><p>ABOUT BOOKWORM</p></h1>
-  <h2>
-      <p>BOOKWORM began as an idea to help support bookstores and their communities at a time when more and more people were
-      buying their books online. We saw an opportunity to create an alternative to Amazon for socially-conscious online
-      shoppers.</p>
-  </h2>    
-</div>
-
-<div class="AboutTeam" ><h1><p>ABOUT OUR TEAM</p></h1>
-  <h2>
-    <p>We are a group of 5 friends.We saw an opportunity to create an alternative to Amazon for socially-conscious online
-      shoppers.</p>
-  </h2>
+<div class="ContactUs">
+<h1>CONTACT US</h1>
+<h2>
+    <p>You Can Contact us Via viral process:
+        <ul>
+            <li><a>Telephone: +20 111 937 7388</a></li>
+            <li><a>E-mail: support@Book.com</a></li>
+        </ul>
+    </p>
+    </h2>
 </div>
 
 <footer>

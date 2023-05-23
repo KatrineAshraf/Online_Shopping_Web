@@ -27,22 +27,31 @@
     <form>
       <input class="search" type="text" name="Search" id="" placeholder="Search">
       <button class="simg" type="submit"><img src="/Images/search.png" alt=""></button>
-    </form>
+  </form>
+   <% if (userId) { %> 
     <div class="dropdown">
       <a href="/profile"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
       <div class="dropdown-content">
-        <% if (userId) { %>
-          <a class="t" href="SignIn.html">Profile</a>
-          <a class="b" href="SignUp.html">Sign Out</a>
-        <% } else { %>
-          <a class="t" href="SignIn.html">Sign In</a>
-        <a class="b" href="SignUp.html">Sign Up</a>
-        <% } %>
+        <a class="t" href="/profile">Profile</a>
+        <a class="b" href="/cart">Cart</a>
       </div>
     </div>
     <div class="cart">
-      <a href="cart.html"><img class="cart_photo" src="/Images/cart.png"></a>
+      <a href="/cart"><img class="cart_photo" src="/Images/cart.png"></a>
     </div>
+      <% } else { %>
+        <div class="dropdown">
+          <a href="#"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
+          <div class="dropdown-content">
+            <a class="t" href="SignIn.html">Sign In</a>
+            <a class="b" href="SignUp.html">Sign Up</a>
+          </div>
+        </div>
+        <div class="cart">
+          <a href="#"><img class="cart_photo" src="/Images/cart.png"></a>
+        </div>
+        <% } %>
+    
   </div>
 
 </header>
