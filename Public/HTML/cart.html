@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BOOKWORM</title>
+  <link href="/CSS/cart.css" rel="stylesheet" >
+</head>
+
+<body>
+<script src="/JAVASCRIPT/cart.js"></script>
+<header>
+  <div class="logot" onclick="window.location.href = 'HomePage.html';">
+    <img src="/Images/book.png" >
+    <h2 class="brandn">BOOKWORM</h2>
+  </div>
+
+  <div class="menuDiv circle">
+    <ul id="topMenu">
+      <li class="lt"><a href="/HomePage">Home</a></li>
+      <li><a href="/Categories">Categories</a></li>
+      <li><a href="/topSellers">Top Sellers</a></li>
+      <li><a href="/AboutUs">About us</a></li>
+      <li class="rt"><a href="/ContactUs">Contact us</a></li>
+    </ul>
+  </div>
+
+  <div class="profile">
+    <form>
+      <input class="search" type="text" name="Search" id="" placeholder="Search">
+      <button class="simg" type="submit"><img src="/Images/search.png" alt=""></button>
+    </form>
+        <div class="dropdown">
+        <a href="profile.html"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
+        <div class="dropdown-content">
+          <a class="t" href="profile.html">Profile</a>
+          <a class="b" href="cart.html">Cart</a>
+        </div>
+      </div>
+      <div class="cart">
+        <a href="cart.html"><img class="cart_photo" src="/Images/cart.png"></a>
+      </div>
+    </div>
+
+</header>
+<main>
+  <div class="view_wrap list-view" style="display: block;">
+    <div class="view_item">
+      <div class="vi_left" onclick="window.location.href = 'Product.html';">
+        <img src="/Images/ATTWN.jpg" alt="tomato">
+      </div>
+      <div class="vi_right">
+        <p class="title" onclick="window.location.href = 'Product.html';" >And Then There Were None</p>
+        <p class="author">-Agatha Christie</p>
+        <p class="content" >A definitive ensemble murder mystery, Clair's star-studded whodunit remains a masterfully-plotted game of suspense. On a remote and isolated island, ten people - seven invited guests, a newly hired personal secretary and two servants - find themselves facing their own deaths.</p>
+      </div>
+    </div>
+
+    <div class="view_item">
+      <div class="vi_left">
+        <img src="/Images/ATTWN.jpg" alt="tomato">
+      </div>
+      <div class="vi_right">
+        <p class="title">And Then There Were None</p>
+        <p class="author">-Agatha Christie</p>
+        <p class="content">A definitive ensemble murder mystery, Clair's star-studded whodunit remains a masterfully-plotted game of suspense. On a remote and isolated island, ten people - seven invited guests, a newly hired personal secretary and two servants - find themselves facing their own deaths.</p>
+      </div>
+    </div>
+<div class="main">
+     
+  
+  <section class="shopping-cart">
+    <ol class="ui-list shopping-cart--list" id="shopping-cart--list">
+
+      <script id="shopping-cart--list-item-template" type="text/template">
+        <li class="_grid shopping-cart--list-item">
+          <div class="_column product-image">
+            <img class="product-image--img" src="{{=img}}" alt="Item image" />
+          </div>
+          <div class="_column product-info">
+            <h4 class="product-name">{{=name}}</h4>
+            <p class="product-desc">{{=desc}}</p>
+            <div class="price product-single-price">${{=price}}</div>
+          </div>
+          <div class="_column product-modifiers" data-product-price="{{=price}}">
+            <div class="_grid">
+              <button class="_btn _column product-subtract">&minus;</button>
+              <div class="_column product-qty">0</div>
+              <button class="_btn _column product-plus">&plus;</button>
+            </div>
+            <button class="_btn entypo-trash product-remove">Remove</button>
+            <div class="price product-total-price">$0.00</div>
+          </div>
+        </li>
+      </script>
+
+    </ol>
+  
+      <div class="_grid cart-totals">
+        <div class="_column subtotal" id="subtotalCtr">
+          <div class="cart-totals-key">Subtotal</div>
+          <div class="cart-totals-value">0.00 $</div>
+        </div>
+        <div class="_column shipping" id="shippingCtr">
+          <div class="cart-totals-key">Shipping</div>
+          <div class="cart-totals-value">0.00 $</div>
+        </div>
+        <div class="_column total" id="totalCtr">
+          <div class="cart-totals-key">Total</div>
+          <div class="cart-totals-value">0.00 $</div>
+        </div>
+        
+       
+        <input type="checkbox" id="myCheck"  onclick="check()" >
+      <span id="special">  <label for="myCheck" class="terms">Accept Our Terms to start your Purchase </label> </span>
+        <button id ="checkt" class="_btn checkout-btn entypo-forward" onclick="checkout()">Checkout</button>
+
+        
+          
+
+
+        
+    </div>
+  
+    </section>
+  </div>
+  
+  <div class="_column checkout" id ="text" style="display:none"><button id ="checkt" class="_btn checkout-btn entypo-forward" onclick="checkout()">Checkout</button></div>
+    
+<footer>
+  <div class="about">
+    <h4>ABOUT BOOKWORM</h4>
+    <p>BOOKWORM began as an idea to help support bookstores and their communities at a time when more and more people were
+      buying their books online. We saw an opportunity to create an alternative to Amazon for socially-conscious online
+      shoppers.</p>
+    <h3 class="cont">Telephone: +20 111 937 7388</h3>
+    <h3 class="cont">Email: support@Book.com</h3>
+  </div>
+  <div class="book">
+    <h4>BOOKWORM</h4>
+    <ul>
+      <li><a href="/HomePage">Home</a></li>
+      <li><a href="/Categories">Categories</a></li>
+      <li><a href="/AboutUs">About Us</a></li>
+      <li><a href="/ContactUs">Contact Us</a></li>
+    </ul>
+  </div>
+  <div class="help">
+    <h4>HELP AND SUPPORT</h4>
+    <ul>
+      <li><a href="customer service.html">Customer Service</a></li>
+      <li><a href="shipping.html">Shipping</a></li>
+      <li><a href="returns.html">Returns</a></li>
+      <li><a href="terms of service.html">Terms Of Service</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>

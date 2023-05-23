@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap" rel="stylesheet">
+    <link href="/CSS/profile.css" rel="stylesheet">
+    <title>BOOKWORM</title>
+</head>
+    <header>
+      <div class="logot" onclick="window.location.href = 'HomePage.html';">
+        <img src="/Images/book.png" >
+        <h2 class="brandn">BOOKWORM</h2>
+      </div>
+    
+      <div class="menuDiv circle">
+        <ul id="topMenu">
+          <li class="lt"><a href="/HomePage">Home</a></li>
+          <li><a href="/Categories">Categories</a></li>
+          <li><a href="/topSellers">Top Sellers</a></li>
+          <li><a href="/AboutUs">About us</a></li>
+          <li class="rt"><a href="/ContactUs">Contact us</a></li>
+        </ul>
+      </div>
+     
+      <div class="profile">
+        <form>
+          <input class="search" type="text" name="Search" id="" placeholder="Search">
+          <button class="simg" type="submit"><img src="/Images/search.png" alt=""></button>
+        </form>
+        
+        <div class="dropdown">
+          <a href="profile.html"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
+          <div class="dropdown-content">
+            <a class="t" href="profile.html">Profile</a>
+            <a class="b" href="cart.html">Cart</a>
+          </div>
+        </div>
+        <div class="cart">
+        <a href="cart.html"><img class="cart_photo" src="/Images/cart.png"></a>
+        </div>
+      </div>
+      
+    </header>
+<body>
+    <div class="form">
+        <h2>My Profile</h2>
+        <hr> <br>
+        <form method="get">
+            <h5>Username</h5>
+            <p>get name from database</p>
+            <br>
+            <h5>Email</h5>
+            <p>get email from database</p>
+            <br>
+            <h5>Location</h5>
+            <p>get location from database</p>
+            <br>
+            <h5>Country</h5>
+            <p>get country from database</p>
+            <br>
+            <h5>Phone number</h5>
+            <p>get Phone number from database</p>
+            <br>
+            <h5>Prefered language</h5>
+            
+            <!-- <form action="/action_page.php"> -->
+              <form id="lang" action="#">
+              <input type="radio" id="Arabic" name="fav_language" value="Arabic">
+              <label for="Arabic"> Arabic</label>
+              <input type="radio" id="English" name="fav_language" value="English">
+              <label for="English">English</label>
+              <input type="radio" id="French" name="fav_language" value="French">
+              <label for="French">French</label>
+              <br>
+        </form>
+      
+    </div>
+    
+</body>
+
+</html>

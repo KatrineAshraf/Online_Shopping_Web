@@ -47,12 +47,11 @@ app.get("/Categories", function (req, res) {
 })
 app.get("/topSellers", async function (req, res) {
 	let books = await db.collection("products").find({}).sort({price: -1}).toArray()
-	console.log("Items:\n" + books)
 	if (userId != ""){
-		res.render("topSellers", {products: books, userId: true});
+		res.render("List", {products: books, userId: true});
 	}
 	else {
-		res.render("topSellers", {products: books, userId: false});
+		res.render("List", {products: books, userId: false});
 	}
 })
 app.get("/AboutUS", function (req, res) {

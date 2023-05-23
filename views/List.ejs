@@ -8,7 +8,7 @@
 <body>
 
 <header>
-  <div class="logot" onclick="window.location.href = 'HomePage.html';">
+  <div class="logot" onclick="window.location.href = '/HomePage.html';">
     <img src="/Images/book.png" >
     <h2 class="brandn">BOOKWORM</h2>
   </div>
@@ -19,7 +19,7 @@
       <li><a href="/Categories">Categories</a></li>
       <li><a href="/topSellers">Top Sellers</a></li>
       <li><a href="/AboutUs">About us</a></li>
-      <li class="rt"><a href="ContactUs">Contact us</a></li>
+      <li class="rt"><a href="/ContactUs">Contact us</a></li>
     </ul>
   </div>
   <div class="profile">
@@ -28,16 +28,19 @@
       <button class="simg" type="submit"><img src="/Images/search.png" alt=""></button>
     </form>
     <div class="dropdown">
-      <a href="profile.html"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
+      <a href="/HTML/profile.html"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
       <div class="dropdown-content">
         <% if (userId) { %>
           <a class="t" href="SignIn.html">Profile</a>
           <a class="b" href="SignUp.html">Sign Out</a>
         <% } else { %>
-          <a class="t" href="SignIn.html">Sign Out</a>
+          <a class="t" href="SignIn.html">Sign In</a>
         <a class="b" href="SignUp.html">Sign Up</a>
         <% } %>
       </div>
+    </div>
+    <div class="cart">
+      <a href="cart.html"><img class="cart_photo" src="/Images/cart.png"></a>
     </div>
   </div>
 
