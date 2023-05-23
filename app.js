@@ -8,7 +8,7 @@ const Customer = require("./models/customers.js");
 const productRoute = require("./routes/productRoute")
 var path = require("path");
 const cookieParser = require("cookie-parser");
-
+var userId = "";
 //! Database Connection
 
 
@@ -45,8 +45,15 @@ app.get("/HomePage", function (req, res) {
 app.get("/Categories", function (req, res) {
 	res.redirect("/HTML/Categories.html");
 })
-app.get("/TopSellers", function (req, res) {
-	res.redirect("/HTML/HomePage.html");
+app.get("/topSellers", async function (req, res) {
+	let books = await db.collection("products").find({}).sort({price: -1}).toArray()
+	console.log("Items:\n" + books)
+	if (userId != ""){
+		res.render("topSellers", {products: books, userId: true});
+	}
+	else {
+		res.render("topSellers", {products: books, userId: false});
+	}
 })
 app.get("/AboutUS", function (req, res) {
 	res.redirect("/HTML/AboutUS.html");

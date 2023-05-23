@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><%=products[0].category%></title>
+  <title>Top Sellers</title>
   <link href="/CSS/List.css" rel="stylesheet" >
 </head>
 <body>
@@ -17,7 +17,7 @@
     <ul id="topMenu">
       <li class="lt"><a href="/HomePage">Home</a></li>
       <li><a href="/Categories">Categories</a></li>
-      <li><a href="/List">Top Sellers</a></li>
+      <li><a href="/topSellers">Top Sellers</a></li>
       <li><a href="/AboutUs">About us</a></li>
       <li class="rt"><a href="ContactUs">Contact us</a></li>
     </ul>
@@ -33,10 +33,10 @@
         <% if (userId) { %>
           <a class="t" href="SignIn.html">Profile</a>
           <a class="b" href="SignUp.html">Sign Out</a>
-        <% } else { %>
+      <% } else { %>
           <a class="t" href="SignIn.html">Sign Out</a>
         <a class="b" href="SignUp.html">Sign Up</a>
-        <% } %>
+        <% } %> 
       </div>
     </div>
   </div>
