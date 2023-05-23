@@ -17,13 +17,15 @@ router.post("/Section", async function(req, res){
 			console.log(result);
            
 		  });
-        res.render('List', {products: products});
+		const userId = req.session.userId;
+        res.render('List', {products: products , userId});
       
 });
 router.post('/Product', async function(req, res){
 	console.log(req.body.id)
 	let item = await db.collection('products').findOne({_id : new ObjectId(req.body.id)})
 	console.log(item)
-	res.render('Product', {product: item});
+	const userId = req.session.userId;
+	res.render('Product', {product: item, userId});
 });
 module.exports = router;

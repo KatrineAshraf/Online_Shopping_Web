@@ -1,18 +1,31 @@
 //! Importing Modules
 var express = require("express");
+const session = require('express-session');
 var bodyParser = require("body-parser");
-var db = require("../project/database.js");
+var db = require("./database.js");
 const customerRoute = require("./routes/customerRoute")
+const Customer = require("./models/customers.js");
 const productRoute = require("./routes/productRoute")
 var path = require("path");
+const cookieParser = require("cookie-parser");
 
 //! Database Connection
 
 
 //! Express Server Initialization
-var app = express()
+var app = express();
+app.use(cookieParser());
+app.use(session({
+	secret: 'idk',
+	saveUninitialized: true,
+    resave: true,
+	cookie: {
+		secure:false,
+	  httpOnly: false,
+	}
+  }));
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname,'Public')));
+app.use(express.static(path.join(__dirname, 'Public')));
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
@@ -21,55 +34,35 @@ app.use(customerRoute);
 
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
-//! User Registration
-app.post('/Users', function(req,res){
-	/*var fname = req.body.fname;
-	var lname = req.body.lname;
-	var email =req.body.email;
-	var pass = req.body.password;
-	var gender =req.body.gender;
-*/
-	console.log(req.body);
-	db.collection('Users').insertOne(req.body,function(err, collection){
-		if (err) throw err;
-		console.log("Record Inserted Successfully");		
-	});	
-	return res.redirect("/HTML/HomePage.html");
-})
-
-//! User Login
-app.post("/login", async function(req, res){
-    try {
-        //! Check if the user exists
-        const user = await db.collection('Users').findOne({ email: req.body.email });
-		console.log(user);
-        if (user) {
-
-          //! Check if password matches
-          const result = req.body.password === user.password;
-          if (result) {
-			console.log("Loggin Page Hit !")
-            res.redirect("/HTML/secret.html");
-          } else {
-			console.log("Incorrect Password !")
-            res.status(400).json({ error: "Incorrect Password" });
-          }
-        } else {
-			console.log("No Such User !")
-        	res.status(400).json({ error: "User doesn't exist" });
-        }
-      } catch (error) {
-			console.log("Request Error !")
-        	res.status(400).json({ error });
-      }
-});
 
 app.get('/', function (req, res) {
 	res.redirect("/HTML/HomePage.html");
 })
 
+app.get("/HomePage", function (req, res) {
+	res.redirect("/HTML/HomePage.html");
+})
+app.get("/Categories", function (req, res) {
+	res.redirect("/HTML/Categories.html");
+})
+app.get("/TopSellers", function (req, res) {
+	res.redirect("/HTML/HomePage.html");
+})
+app.get("/AboutUS", function (req, res) {
+	res.redirect("/HTML/AboutUS.html");
+})
+app.get("/ContactUs", function (req, res) {
+	res.redirect("/HTML/ContactUs.html");
+})
+app.get("/SignIn.html", function (req, res) {
+	res.redirect("/HTML/SignIn.html");
+})
+app.get("/SignUp.html", function (req, res) {
+	res.redirect("/HTML/SignUp.html");
+})
+
 var port = 5500;
 app.listen(port, function () {
-    console.log("Server Is Listening To Port 5500 !");
+	console.log("Server Is Listening To Port 5500 !");
 });
 module.exports = app;

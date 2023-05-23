@@ -9,20 +9,19 @@
 
   <header>
     <div class="logot" onclick="window.location.href = 'HomePage.html';">
-      <img src="/Images/book.png">
+      <img src="/Images/book.png" >
       <h2 class="brandn">BOOKWORM</h2>
     </div>
   
     <div class="menuDiv circle">
       <ul id="topMenu">
-        <li class="lt"><a href="HomePage.html">Home</a></li>
-        <li><a href="Categories.html">Categories</a></li>
-        <li><a href="List.html">Top Sellers</a></li>
-        <li><a href="AboutUs.html">About us</a></li>
-        <li class="rt"><a href="ContactUs.html">Contact us</a></li>
+        <li class="lt"><a href="/HomePage">Home</a></li>
+        <li><a href="/Categories">Categories</a></li>
+        <li><a href="/List">Top Sellers</a></li>
+        <li><a href="/AboutUs">About us</a></li>
+        <li class="rt"><a href="ContactUs">Contact us</a></li>
       </ul>
     </div>
-  
     <div class="profile">
       <form>
         <input class="search" type="text" name="Search" id="" placeholder="Search">
@@ -31,13 +30,19 @@
       <div class="dropdown">
         <a href="profile.html"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
         <div class="dropdown-content">
-          <a class="t" href="SignIn.html">Sign In</a>
+          <% if (userId) { %>
+            <a class="t" href="SignIn.html">Profile</a>
+            <a class="b" href="SignUp.html">Sign Out</a>
+          <% } else { %>
+            <a class="t" href="SignIn.html">Sign Out</a>
           <a class="b" href="SignUp.html">Sign Up</a>
+          <% } %>
         </div>
       </div>
     </div>
   
   </header>
+  
 <main>
   <div class="list-view" style="display: block;">
 

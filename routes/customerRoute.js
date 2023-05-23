@@ -4,7 +4,8 @@ const customerController = require("../controllers/customerController");
 
 router.get("/customers", customerController.getCustomers);
 router.put("/customer/buy", customerController.buyItem);
-router.post("/customer/checkOut", customerController.checkOut);
-router.post("/add-customer", customerController.createCustomer);
+router.post("/customer/checkout", customerController.checkOut);
+router.post("/Users", customerController.createCustomer);
+router.post("/login", customerController.signIn);
 
 module.exports = router;

@@ -15,14 +15,13 @@
 
   <div class="menuDiv circle">
     <ul id="topMenu">
-      <li class="lt"><a href="HomePage.html">Home</a></li>
-      <li><a href="Categories.html">Categories</a></li>
-      <li><a href="List.html">Top Sellers</a></li>
-      <li><a href="AboutUs.html">About us</a></li>
-      <li class="rt"><a href="ContactUs.html">Contact us</a></li>
+      <li class="lt"><a href="/HomePage">Home</a></li>
+      <li><a href="/Categories">Categories</a></li>
+      <li><a href="/List">Top Sellers</a></li>
+      <li><a href="/AboutUs">About us</a></li>
+      <li class="rt"><a href="ContactUs">Contact us</a></li>
     </ul>
   </div>
-
   <div class="profile">
     <form>
       <input class="search" type="text" name="Search" id="" placeholder="Search">
@@ -31,14 +30,18 @@
     <div class="dropdown">
       <a href="profile.html"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
       <div class="dropdown-content">
-        <a class="t" href="SignIn.html">Sign In</a>
+        <% if (userId) { %>
+          <a class="t" href="SignIn.html">Profile</a>
+          <a class="b" href="SignUp.html">Sign Out</a>
+        <% } else { %>
+          <a class="t" href="SignIn.html">Sign Out</a>
         <a class="b" href="SignUp.html">Sign Up</a>
+        <% } %>
       </div>
     </div>
   </div>
 
 </header>
-
 
 
 
@@ -58,7 +61,9 @@
         <p class="author">-<%=products[i].author%></p>
         <form action="/cart" method='post' class="btns">
           <input type="submit" class="btn1" value="Add To Cart">
-          <input type="hidden" name="id" value=<%=products[i].id%>>
+          <%= console.log(products[i]._id) %>
+          <%var PID =products[i]._id %>
+          <input type="hidden" name="id" value="<%= PID %>">
           </form>
           </div>
         </div>

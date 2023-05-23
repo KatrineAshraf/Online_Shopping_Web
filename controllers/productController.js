@@ -1,7 +1,9 @@
 const Product = require("../models/products");
 const Customer = require("../models/customers");
-const Transaction = require("../models/transactions")
+const Transaction = require("../models/transactions");
+var db = require("../database.js");
 const mongoose = require("mongoose");
+const { session } = require("passport");
 exports.createProduct = async (req, res, next) => {
     const name = req.body.name;
     const price = req.body.price;
@@ -17,11 +19,11 @@ exports.createProduct = async (req, res, next) => {
 };
 
 exports.buyProduct = async (req, res, next) => {
-    const CID = req.body.CID;
-    const PID = req.body.PID;
+    const CID = req.session.userId;
+    const PID = req.body.id;
     console.log(CID, PID);
-    const product = await Product.findOne({ _id: PID })
-    const customer = await Customer.findOne({ _id: CID })
+    const product = await Product.findOne({ _id: PID });
+    const customer = await Customer.findOne({ _id: CID });
     if (!customer) {
         res.status(201).json({
             message: "Customer Not Found"
@@ -33,8 +35,8 @@ exports.buyProduct = async (req, res, next) => {
         });
     }
     else {
-        if (product.quantity > 0) {
-            product.quantity -= 1;
+        if (product.qty > 0) {
+            product.qty -= 1;
             await product.save();
             customer.items.push(product._id);
             customer.total += product.price;
