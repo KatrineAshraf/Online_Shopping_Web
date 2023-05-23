@@ -1,5 +1,6 @@
 const Customer = require("../models/customers");
-const productController = require("../controllers/productController")
+const productController = require("../controllers/productController");
+const transactions = require("../models/transactions");
 exports.createCustomer = async (req, res, next) => {
     console.log(req.body);
     var fname = req.body.fname;
@@ -11,7 +12,7 @@ exports.createCustomer = async (req, res, next) => {
 	var total = 0;
     const customer = new Customer({ fname, lname, email, password, gender, items, total });
     const savedCustomer = await customer.save();
-    res.redirect("/HTML/HomePage.html");
+    res.redirect("/HomePage");
 };
 
 exports.signIn = async (req, res, next) => {
@@ -27,19 +28,29 @@ exports.signIn = async (req, res, next) => {
                 req.session.userId = user._id;
                 console.log(req.session);
 				console.log("Loggin Page Hit !")
-				res.redirect("/HTML/HomePage.html");
+				res.redirect("/HomePage");
 			} else {
 				console.log("Incorrect Password !")
 				res.redirect("/HTML/SignIn.html");
 			}
 		} else {
 			console.log("No Such User !")
-			res.status(404).json({ error: "User doesn't exist" });
+			res.redirect("/HTML/SignIn.html");
 		}
 	} catch (error) {
 		console.log("Request Error !")
 		res.status(500).json({ error });
 	}
+};
+
+exports.signOut = async (req, res, next) => {
+    req.session.destroy((err) => {
+		if (err) {
+		  console.log('Error destroying session:', err);
+		} else {
+		  res.redirect('/SignIn.html');
+		}
+	  });
 };
 
 exports.getCustomers = async (req, res, next) => {
@@ -55,4 +66,16 @@ exports.buyItem = async (req, res, next) => {
 };
 exports.checkOut = async (req, res, next) => {
     productController.checkOut(req, res, next);
+};
+exports.getProfile = async (req, res, next) => {
+    const customer = await Customer.findOne({_id: req.session.userId})
+    if (customer){
+		const Transactions = await transactions.find({CID: req.session.userId})
+		var spent = 0;
+		console.log(Transactions[0]);
+		for (let i=0; i<Transactions.length; i++){
+			spent += Transactions[i].total;
+		}
+        res.render('profile', { customer: customer , spent: spent})
+    }
 };

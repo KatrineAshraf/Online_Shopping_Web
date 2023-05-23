@@ -1,31 +1,11 @@
 const express = require("express");
-const { MongoClient, ObjectId } = require('mongodb');
 const router = express.Router();
-var bodyParser = require("body-parser");
 const productController = require("../controllers/productController");
-const db = require("../database.js");
 
-router.get("/products/:id", productController.getProductURL);
+
+//router.get("/products/:id", productController.getProductURL);
 router.post("/add-product", productController.createProduct);
 router.post("/cart", productController.buyProduct);
-router.post("/Section", async function(req, res){
-	console.log(req.body.category)
-
-        //! Check if the user exists
-        let products = await db.collection('products').find({ category: req.body.category }).toArray(function(err, result) {
-			if (err) throw err;
-			console.log(result);
-           
-		  });
-		const userId = req.session.userId;
-        res.render('List', {products: products , userId});
-      
-});
-router.post('/Product', async function(req, res){
-	console.log(req.body.id)
-	let item = await db.collection('products').findOne({_id : new ObjectId(req.body.id)})
-	console.log(item)
-	const userId = req.session.userId;
-	res.render('Product', {product: item, userId});
-});
+router.post("/Section", productController.ListProduct);
+router.post('/Product', productController.getProduct);
 module.exports = router;
