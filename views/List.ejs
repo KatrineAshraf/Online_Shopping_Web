@@ -81,11 +81,10 @@
             <p class="author">-<%=products[i].author%>
             </p>
             <form class="formo" action="/cart" method='post' class="btns">
+              <p class="price"><%=products[i].price%>$</p>
               <input type="submit" class="btn1" value="Add To Cart">
-                <%= console.log(products[i]._id) %>
                 <%var PID=products[i]._id %>
-                <%=products[i].price%>$
-              <input type="hidden" name="id" value="<%= PID %>">
+              <input type="hidden" name="id" value=<%= PID %>>
             </form>
             </p>
           </div>

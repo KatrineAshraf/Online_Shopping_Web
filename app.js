@@ -67,5 +67,6 @@ app.get("/SignUp.html", function (req, res) {
 var port = 5500;
 app.listen(port, function () {
 	console.log("Server Is Listening To Port 5500 !");
+	console.log("go to http://localhost:" + port);
 });
 module.exports = app;

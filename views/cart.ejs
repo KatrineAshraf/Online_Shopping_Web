@@ -57,10 +57,11 @@
             <p class="title"><%=products[i].name%></p>
             <p class="author">-<%=products[i].author%></p>
             <form action="/remove" method='post' class="btns">
+              <p class="price"><%=products[i].price%>$</p>
               <input type="submit" class="btn1" value="Remove">
               <%var PID =products[i]._id %> 
-              <p class="price"><%=products[i].price%>$</p>
-              <input type="hidden" name="id" value="<%= PID %>">
+              
+              <input type="hidden" name="id" value=<%= PID %>>
               </form>
               </div>
             </div>
@@ -73,11 +74,11 @@
       <div class="_grid cart-totals">
         <div class="_column subtotal" id="subtotalCtr">
           <div class="cart-totals-key">Subtotal</div>
-          <div class="cart-totals-value"><%=total%> $</div>
+          <div class="cart-totals-value"><%=total.toFixed(2);%> $</div>
         </div>
         <div class="_column shipping" id="shippingCtr">
           <div class="cart-totals-key">Shipping</div>
-          <% var shipping = total / 10; %>
+          <% if (products.length !=0) var shipping = 15; else var shipping = 0 %>
           <div class="cart-totals-value"><%=shipping.toFixed(2);%> $</div>
         </div>
         <div class="_column total" id="totalCtr">

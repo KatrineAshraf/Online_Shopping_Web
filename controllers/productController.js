@@ -1,7 +1,6 @@
 const Product = require("../models/products");
 const Customer = require("../models/customers");
 const Transaction = require("../models/transactions");
-var db = require("../database.js");
 const ObjectId = require('mongodb').ObjectId;
 
 exports.createProduct = async (req, res, next) => {
@@ -37,6 +36,7 @@ exports.buyProduct = async (req, res, next) => {
             customer.total = customer.total.toFixed(2);
             const Ncustomer = await customer.save();
             res.status(201);
+            res.redirect("/cart");
         }
         else {
             res.redirect("/Section");
@@ -75,7 +75,7 @@ exports.checkOut = async (req, res, next) => {
     const items = customer.items;
     for (let i = 0; i < items.length; i++) {
         PID = items[i];
-        const product = await Product.findOne({ _id: PID });
+        const product = await Product.findOne({ _id: new ObjectId(PID)});
         product.qty -= 1;
         await product.save();
     }
@@ -101,18 +101,14 @@ exports.ListProduct = async (req, res, next) => {
             { qty: { $ne: 0 } }
         ]
     };
-    let products = await db.collection('products').find(condition).toArray(function (err, result) {
-        if (err) throw err;
-        console.log(result);
-
-    });
+    let products = await Product.find(condition);
     const userId = req.session.userId;
     res.render('List', { products: products, userId, istop: false });
 }
 
 exports.getProduct = async function (req, res) {
     //console.log(req.body.id)
-    let item = await db.collection('products').findOne({ _id: new ObjectId(req.body.id) })
+    let item = await Product.findOne({ _id: new ObjectId(req.body.id) })
     //console.log(item)
     const userId = req.session.userId;
     res.render('Product', { product: item, userId });

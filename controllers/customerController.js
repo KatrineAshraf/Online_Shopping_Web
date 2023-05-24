@@ -1,4 +1,5 @@
 const Customer = require("../models/customers");
+const Product = require("../models/products");
 const productController = require("../controllers/productController");
 const transactions = require("../models/transactions");
 
@@ -14,6 +15,8 @@ exports.createCustomer = async (req, res, next) => {
 	var total = 0;
     const customer = new Customer({ fname, lname, email, password, gender, items, total });
     const savedCustomer = await customer.save();
+	//const user = await Customer.findOne({ email : email });
+	req.session.userId = savedCustomer._id;
     res.redirect("/HomePage");
 };
 
@@ -22,7 +25,7 @@ exports.signIn = async (req, res, next) => {
 		//! Check if the user exists
 		var email = req.body.email;
 		const user = await Customer.findOne({ email : email });
-		console.log(user);
+		//console.log(user);
 		if (user) {
 			//! Check if password matches
 			const result = req.body.password === user.password;
@@ -62,10 +65,10 @@ exports.getCustomers = async (req, res, next) => {
         customers: customers
     });
 };
-/*
+
 exports.buyItem = async (req, res, next) => {
     productController.buyProduct(req, res, next);
-};*/
+};
 exports.checkOut = async (req, res, next) => {
     productController.checkOut(req, res, next);
 };
@@ -86,10 +89,13 @@ exports.getCart = async (req, res, next) =>  {
 	const customer = await Customer.findOne({ _id: req.session.userId });
 	const booksID = customer.items;
 	let books = [];
+	//console.log("books: " + booksID)
 	for (let i = 0; i < booksID.length; i++) {
-		const product = await db.collection("products").find({ _id: booksID[i] }).toArray();
-		books.push(product[0]);
+		const product = await Product.findOne({ _id: booksID[i] })
+	//	console.log("book" + (i+1) +": "+ booksID[i])
+		books.push(product);
 	}
+	//console.log("final books: " + books)
 	res.render("cart", { products: books, total: customer.total});
 	
 }
