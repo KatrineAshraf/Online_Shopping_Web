@@ -57,10 +57,9 @@
             <p class="title"><%=products[i].name%></p>
             <p class="author">-<%=products[i].author%></p>
             <form action="/remove" method='post' class="btns">
-              <p class="price"><%=products[i].price%>$</p>
               <input type="submit" class="btn1" value="Remove">
               <%var PID =products[i]._id %> 
-              
+              <p class="price"><%=products[i].price%>$</p>
               <input type="hidden" name="id" value=<%= PID %>>
               </form>
               </div>

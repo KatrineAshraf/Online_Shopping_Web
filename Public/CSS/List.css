@@ -242,7 +242,6 @@ input::-webkit-input-placeholder {
 .view_item .btns{
   display: flex;
   align-items: center;
-  flex-direction: column;
 }
 
 .view_item .btn1,.btn2 {
