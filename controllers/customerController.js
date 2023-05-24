@@ -1,6 +1,8 @@
 const Customer = require("../models/customers");
 const productController = require("../controllers/productController");
 const transactions = require("../models/transactions");
+
+
 exports.createCustomer = async (req, res, next) => {
     console.log(req.body);
     var fname = req.body.fname;
@@ -26,8 +28,8 @@ exports.signIn = async (req, res, next) => {
 			const result = req.body.password === user.password;
 			if (result) {
                 req.session.userId = user._id;
-                console.log(req.session);
-				console.log("Loggin Page Hit !")
+               // console.log(req.session);
+			//	console.log("Loggin Page Hit !")
 				res.redirect("/HomePage");
 			} else {
 				console.log("Incorrect Password !")
@@ -38,7 +40,7 @@ exports.signIn = async (req, res, next) => {
 			res.redirect("/HTML/SignIn.html");
 		}
 	} catch (error) {
-		console.log("Request Error !")
+		//console.log("Request Error !")
 		res.status(500).json({ error });
 	}
 };
@@ -60,10 +62,10 @@ exports.getCustomers = async (req, res, next) => {
         customers: customers
     });
 };
-
+/*
 exports.buyItem = async (req, res, next) => {
     productController.buyProduct(req, res, next);
-};
+};*/
 exports.checkOut = async (req, res, next) => {
     productController.checkOut(req, res, next);
 };
@@ -72,10 +74,22 @@ exports.getProfile = async (req, res, next) => {
     if (customer){
 		const Transactions = await transactions.find({CID: req.session.userId})
 		var spent = 0;
-		console.log(Transactions[0]);
+	//	console.log(Transactions[0]);
 		for (let i=0; i<Transactions.length; i++){
 			spent += Transactions[i].total;
 		}
         res.render('profile', { customer: customer , spent: spent})
     }
 };
+
+exports.getCart = async (req, res, next) =>  {
+	const customer = await Customer.findOne({ _id: req.session.userId });
+	const booksID = customer.items;
+	let books = [];
+	for (let i = 0; i < booksID.length; i++) {
+		const product = await db.collection("products").find({ _id: booksID[i] }).toArray();
+		books.push(product[0]);
+	}
+	res.render("cart", { products: books, total: customer.total});
+	
+}

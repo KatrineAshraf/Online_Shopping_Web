@@ -3,8 +3,7 @@ const Customer = require("../models/customers");
 const Transaction = require("../models/transactions");
 var db = require("../database.js");
 const ObjectId = require('mongodb').ObjectId;
-const mongoose = require("mongoose");
-const { session } = require("passport");
+
 exports.createProduct = async (req, res, next) => {
     const name = req.body.name;
     const price = req.body.price;
@@ -22,7 +21,7 @@ exports.createProduct = async (req, res, next) => {
 exports.buyProduct = async (req, res, next) => {
     const CID = req.session.userId;
     const PID = req.body.id;
-    console.log(CID, PID);
+   // console.log(CID, PID);
     const product = await Product.findOne({ _id: PID });
     const customer = await Customer.findOne({ _id: CID });
     if (!customer) {

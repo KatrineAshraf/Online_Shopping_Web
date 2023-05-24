@@ -63,24 +63,7 @@ app.get("/SignIn.html", function (req, res) {
 app.get("/SignUp.html", function (req, res) {
 	res.redirect("/HTML/SignUp.html");
 })
-app.get("/cart", async function (req, res) {
-	const CID = req.session.userId;
-	const customer = await Customer.findOne({ _id: CID });
-	const booksID = customer.items;
-	const total = customer.total;
-	let books = [];
-	for (let i = 0; i < booksID.length; i++) {
-		const product = await db.collection("products").find({ _id: booksID[i] }).toArray();
-		books.push(product[0]);
-	}
-	if (CID != "") {
-		res.render("cart", { products: books, total: total, userId: true, istop: true });
-	}
-	else {
-		res.render("cart", { products: books, total: total, userId: false, istop: true });
-		console.log("problem")
-	}
-})
+
 var port = 5500;
 app.listen(port, function () {
 	console.log("Server Is Listening To Port 5500 !");
