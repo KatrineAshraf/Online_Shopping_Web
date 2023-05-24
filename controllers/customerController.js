@@ -1,5 +1,6 @@
 const Customer = require("../models/customers");
-const productController = require("../controllers/productController")
+const productController = require("../controllers/productController");
+const transactions = require("../models/transactions");
 exports.createCustomer = async (req, res, next) => {
     console.log(req.body);
     var fname = req.body.fname;
@@ -34,12 +35,22 @@ exports.signIn = async (req, res, next) => {
 			}
 		} else {
 			console.log("No Such User !")
-			res.status(404).json({ error: "User doesn't exist" });
+			res.redirect("/HTML/SignIn.html");
 		}
 	} catch (error) {
 		console.log("Request Error !")
 		res.status(500).json({ error });
 	}
+};
+
+exports.signOut = async (req, res, next) => {
+    req.session.destroy((err) => {
+		if (err) {
+		  console.log('Error destroying session:', err);
+		} else {
+		  res.redirect('/SignIn.html');
+		}
+	  });
 };
 
 exports.getCustomers = async (req, res, next) => {
@@ -59,6 +70,12 @@ exports.checkOut = async (req, res, next) => {
 exports.getProfile = async (req, res, next) => {
     const customer = await Customer.findOne({_id: req.session.userId})
     if (customer){
-        res.render('profile', { customer: customer})
+		const Transactions = await transactions.find({CID: req.session.userId})
+		var spent = 0;
+		console.log(Transactions[0]);
+		for (let i=0; i<Transactions.length; i++){
+			spent += Transactions[i].total;
+		}
+        res.render('profile', { customer: customer , spent: spent})
     }
 };

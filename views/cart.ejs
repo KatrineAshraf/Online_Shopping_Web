@@ -30,14 +30,15 @@
       <button class="simg" type="submit"><img src="/Images/search.png" alt=""></button>
     </form>
         <div class="dropdown">
-        <a href="profile.html"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
+        <a href="profile"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
         <div class="dropdown-content">
-          <a class="t" href="profile.html">Profile</a>
-          <a class="b" href="cart.html">Cart</a>
+          <a class="t" href="profile">Profile</a>
+          <a class="m" href="/SignOut">Sign Out</a>
+          <a class="b" href="cart">Cart</a>
         </div>
       </div>
       <div class="cart">
-        <a href="cart.html"><img class="cart_photo" src="/Images/cart.png"></a>
+        <a href="cart"><img class="cart_photo" src="/Images/cart.png"></a>
       </div>
     </div>
 
@@ -55,10 +56,10 @@
           <div class="vi_right">
             <p class="title"><%=products[i].name%></p>
             <p class="author">-<%=products[i].author%></p>
-            <form action="/cart" method='post' class="btns">
-              <input type="submit" class="btn1" value="Add To Cart">
-              <%= console.log("helpme") %>
+            <form action="/remove" method='post' class="btns">
+              <input type="submit" class="btn1" value="Remove">
               <%var PID =products[i]._id %> 
+              <p class="price"><%=products[i].price%>$</p>
               <input type="hidden" name="id" value="<%= PID %>">
               </form>
               </div>
@@ -69,23 +70,22 @@
      
   
   <section class="shopping-cart">
-
-  
       <div class="_grid cart-totals">
         <div class="_column subtotal" id="subtotalCtr">
           <div class="cart-totals-key">Subtotal</div>
-          <div class="cart-totals-value">0.00 $</div>
+          <div class="cart-totals-value"><%=total%> $</div>
         </div>
         <div class="_column shipping" id="shippingCtr">
           <div class="cart-totals-key">Shipping</div>
-          <div class="cart-totals-value">0.00 $</div>
+          <% var shipping = total / 10; %>
+          <div class="cart-totals-value"><%=shipping.toFixed(2);%> $</div>
         </div>
         <div class="_column total" id="totalCtr">
           <div class="cart-totals-key">Total</div>
-          <div class="cart-totals-value">0.00 $</div>
+          <% var finalTotal = total + shipping %>
+          <div class="cart-totals-value"><%=finalTotal.toFixed(2)%> $</div>
         </div>
     </div>
-  
     </section>
   </div>
   
@@ -106,18 +106,18 @@
     <h4>BOOKWORM</h4>
     <ul>
       <li><a href="/HomePage">Home</a></li>
-      <li><a href="/Categories">Categories</a></li>
-      <li><a href="/AboutUs">About Us</a></li>
-      <li><a href="/ContactUs">Contact Us</a></li>
+      <li><a href="Categories">Categories</a></li>
+      <li><a href="AboutUs">About Us</a></li>
+      <li><a href="ContactUs">Contact Us</a></li>
     </ul>
   </div>
   <div class="help">
     <h4>HELP AND SUPPORT</h4>
     <ul>
-      <li><a href="customer service.html">Customer Service</a></li>
-      <li><a href="shipping.html">Shipping</a></li>
-      <li><a href="returns.html">Returns</a></li>
-      <li><a href="terms of service.html">Terms Of Service</a></li>
+      <li><a href="#">Customer Service</a></li>
+      <li><a href="#">Shipping</a></li>
+      <li><a href="#">Returns</a></li>
+      <li><a href="#">Terms Of Service</a></li>
     </ul>
   </div>
 </footer>

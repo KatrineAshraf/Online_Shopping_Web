@@ -267,6 +267,10 @@ line-height: 3;
   border-bottom-right-radius: 10px;
 }
 
+.dropdown-content .m:hover {
+  background-color: #2e70a9;
+}
+
 .dropdown:hover .dropdown-content {
   display: block;
 }

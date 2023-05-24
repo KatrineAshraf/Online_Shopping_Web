@@ -17,12 +17,12 @@ app.use(cookieParser());
 app.use(session({
 	secret: 'idk',
 	saveUninitialized: true,
-    resave: true,
+	resave: true,
 	cookie: {
-		secure:false,
-	  httpOnly: false,
+		secure: false,
+		httpOnly: false,
 	}
-  }));
+}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'Public')));
 app.use(bodyParser.urlencoded({
@@ -39,22 +39,23 @@ app.get('/', function (req, res) {
 })
 
 app.get("/HomePage", function (req, res) {
-	res.render('HomePage', {userId: req.session.userId});
+	res.render('HomePage', { userId: req.session.userId });
 })
 app.get("/Categories", function (req, res) {
-	res.render("Categories", {userId: req.session.userId});
+	res.render("Categories", { userId: req.session.userId });
 })
 
 app.get("/topSellers", async function (req, res) {
-	let books = await db.collection("products").find({}).sort({price: -1}).toArray()
-	res.render("List", {products: books, userId: req.session.userId, istop: true});
+	const condition = { qty: { $ne: 0 } };
+	let books = await db.collection("products").find(condition).sort({ price: -1 }).toArray()
+	res.render("List", { products: books, userId: req.session.userId, istop: true });
 })
 
 app.get("/AboutUS", function (req, res) {
-res.render("AboutUs", {userId: req.session.userId});
+	res.render("AboutUs", { userId: req.session.userId });
 })
 app.get("/ContactUs", function (req, res) {
-	res.render("ContactUs", {userId: req.session.userId});
+	res.render("ContactUs", { userId: req.session.userId });
 })
 app.get("/SignIn.html", function (req, res) {
 	res.redirect("/HTML/SignIn.html");
@@ -66,19 +67,17 @@ app.get("/cart", async function (req, res) {
 	const CID = req.session.userId;
 	const customer = await Customer.findOne({ _id: CID });
 	const booksID = customer.items;
+	const total = customer.total;
 	let books = [];
 	for (let i = 0; i < booksID.length; i++) {
-		const product = await db.collection("products").find({_id : booksID[i]}).toArray();
+		const product = await db.collection("products").find({ _id: booksID[i] }).toArray();
 		books.push(product[0]);
-	  }
-	console.log("books:");
-	console.log(books[1]);
-	console.log(books[1]._id);
-	if (CID != ""){
-		res.render("cart", {products: books, userId: true, istop: true});
+	}
+	if (CID != "") {
+		res.render("cart", { products: books, total: total, userId: true, istop: true });
 	}
 	else {
-		res.render("cart", {products: books, userId: false , istop: true});
+		res.render("cart", { products: books, total: total, userId: false, istop: true });
 		console.log("problem")
 	}
 })

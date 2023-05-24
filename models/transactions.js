@@ -9,6 +9,10 @@ const transactionsSchema = new Schema({
     items: {
         type: Array,
         required: true
+    },
+    total: {
+        type: Number,
+        required: true
     }
 });
 

@@ -34,7 +34,8 @@
           <a href="/profile"><img class="prof_photo" src="/Images/profile.png" alt="profile"></a>
           <div class="dropdown-content">
             <a class="t" href="profile.html">Profile</a>
-            <a class="b" href="cart.html">Cart</a>
+            <a class="m" href="/SignOut">Sign Out</a>
+            <a class="b" href="cart">Cart</a>
           </div>
         </div>
         <div class="cart">
@@ -55,7 +56,7 @@
             <p><%=customer.email%></p>
             <br>
             <h5>Spent</h5>
-            <p><%=customer.total%> $</p>
+            <p><%=spent.toFixed(2);%> $</p>
             
            
         </form>

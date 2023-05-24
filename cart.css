@@ -331,11 +331,6 @@ h1, .sub-heading {
     height: 100%; /* make vertical lines match */
 }
 
-.price{
-  margin-left: 2%;
-  font-size: 3.6em;
-}
-
 /**
  * @section: product-modifiers;
  * @extends: _column;
