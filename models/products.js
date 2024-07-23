@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require("../database.js");
+const { Schema } = mongoose;
 
-const Schema = mongoose.Schema;
 const productSchema = new Schema({
     image: {
         type: String,
@@ -11,6 +11,10 @@ const productSchema = new Schema({
         required: true
     },
     author: {
+        type: String,
+        required: true
+    },
+    description: {
         type: String,
         required: true
     },
