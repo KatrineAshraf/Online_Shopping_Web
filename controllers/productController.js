@@ -107,9 +107,13 @@ exports.ListProduct = async (req, res, next) => {
 }
 
 exports.getProduct = async function (req, res) {
-    //console.log(req.body.id)
     let item = await Product.findOne({ _id: new ObjectId(req.body.id) })
-    //console.log(item)
     const userId = req.session.userId;
     res.render('Product', { product: item, userId });
+};
+exports.TopSellers = async function (req, res) {
+	const condition = { qty: { $ne: 0 } };
+	let books = await Product.find(condition).sort({ price: -1 });
+	// console.log(books)
+	res.render("List", { products: books, userId: req.session.userId, istop: true });
 };

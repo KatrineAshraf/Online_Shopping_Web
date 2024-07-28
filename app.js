@@ -2,14 +2,11 @@
 var express = require("express");
 const session = require('express-session');
 var bodyParser = require("body-parser");
-var db = require("./database.js");
 const customerRoute = require("./routes/customerRoute")
-const Customer = require("./models/customers.js");
 const productRoute = require("./routes/productRoute")
 var path = require("path");
 const cookieParser = require("cookie-parser");
 //! Database Connection
-
 
 //! Express Server Initialization
 var app = express();
@@ -45,12 +42,6 @@ app.get("/Categories", function (req, res) {
 	res.render("Categories", { userId: req.session.userId });
 })
 
-app.get("/topSellers", async function (req, res) {
-	const condition = { qty: { $ne: 0 } };
-	let books = await db.collection("products").find(condition).sort({ price: -1 }).toArray()
-	res.render("List", { products: books, userId: req.session.userId, istop: true });
-})
-
 app.get("/AboutUS", function (req, res) {
 	res.render("AboutUs", { userId: req.session.userId });
 })
@@ -69,4 +60,6 @@ app.listen(port, function () {
 	console.log("Server Is Listening To Port 5500 !");
 	console.log("go to http://localhost:" + port);
 });
+
+
 module.exports = app;

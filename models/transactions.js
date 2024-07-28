@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+const mongoose = require("../database.js");
+const { Schema } = mongoose;
 
-const Schema = mongoose.Schema;
 const transactionsSchema = new Schema({
     CID: {
         type: String,
