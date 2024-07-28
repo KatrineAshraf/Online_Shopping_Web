@@ -5,11 +5,13 @@ var bodyParser = require("body-parser");
 const customerRoute = require("./routes/customerRoute")
 const productRoute = require("./routes/productRoute")
 var path = require("path");
+const favicon = require("serve-favicon")
 const cookieParser = require("cookie-parser");
 //! Database Connection
 
 //! Express Server Initialization
 var app = express();
+app.use(favicon(path.join(__dirname, 'Public', 'favicon.ico')))
 app.use(cookieParser());
 app.use(session({
 	secret: 'idk',
@@ -20,6 +22,7 @@ app.use(session({
 		httpOnly: false,
 	}
 }));
+
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'Public')));
 app.use(bodyParser.urlencoded({
